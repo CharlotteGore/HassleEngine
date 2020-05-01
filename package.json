@@ -1,0 +1,40 @@
+{
+  "name": "hassleengine",
+  "version": "0.0.1",
+  "description": "A custom Adventure Game engine",
+  "main": "./build/bundle.js",
+  "scripts": {
+    "dev": "webpack --config webpack.config.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CharlotteGore/HassleEngine.git"
+  },
+  "keywords": [
+    "adventure",
+    "game",
+    "engine",
+    "hassle",
+    "point",
+    "and",
+    "click"
+  ],
+  "author": "Charlotte Gore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CharlotteGore/HassleEngine/issues"
+  },
+  "homepage": "https://github.com/CharlotteGore/HassleEngine#readme",
+  "devDependencies": {
+    "@types/gl-matrix": "^2.4.5",
+    "jest": "^25.4.0",
+    "ts-loader": "^7.0.1",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "gl-matrix": "^3.3.0"
+  }
+}
