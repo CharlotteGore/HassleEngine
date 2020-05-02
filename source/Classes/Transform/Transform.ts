@@ -2,12 +2,12 @@ import {
     create as createMat4, 
     translate,
     scale, 
-    mul,
+    multiply as mul,
     fromRotationTranslationScale, 
     rotate 
 } from "glMatrix/mat4";
 import { create as createVec3, clone as cloneVec3, fromValues as fromValuesVec3 } from "glMatrix/vec3";
-import { create as createQuat, clone as cloneQuat, getAxisAngle } from "glMatrix/quat";
+import { create as createQuat, clone as cloneQuat } from "glMatrix/quat";
 
 import { Mat4, Vec3, Quat } from "glMatrix/types";
 
@@ -25,7 +25,7 @@ export class Transform {
         this.localMatrix = createMat4();
         this.worldMatrix = createMat4();
         this.position = translation ? cloneVec3(translation) : createVec3();
-        this.scaling = scale ? cloneVec3(translation) : fromValuesVec3(1, 1, 1);
+        this.scaling = scale ? cloneVec3(scale) : fromValuesVec3(1, 1, 1);
         this.rotation = rotation ? cloneQuat(rotation) : createQuat();
         this.updateLocalMatrix();
     }
@@ -33,7 +33,7 @@ export class Transform {
     /**
      * Updates the local matrix
      */
-    private updateLocalMatrix = (): void => {
+    private updateLocalMatrix = (): void => {;
         fromRotationTranslationScale(this.localMatrix, this.rotation, this.position, this.scaling);
     }
 
@@ -42,14 +42,18 @@ export class Transform {
      * 
      * @returns {Mat4} the current world matrix
      */
-    getWorldMatrix = (): Mat4 => this.worldMatrix;
+    getWorldMatrix = (): Mat4 => {
+        return this.worldMatrix;
+    }
 
     /**
      * Get the local matrix
      * 
      * @returns {Mat4} the current world matrix
      */
-    getLocalMatrix = (): Mat4 => this.localMatrix;
+    getLocalMatrix = (): Mat4 => {
+        return this.localMatrix;
+    }
     
     /**
      * Sets a new rotation, translation and scale
@@ -70,7 +74,7 @@ export class Transform {
      *
      * @returns {Vec3} the current position
      */
-    getPosition = (): Vec3 => {
+    getTranslation = (): Vec3 => {
         return this.position;
     }
 
@@ -79,7 +83,7 @@ export class Transform {
      *
      * @param {Readonly<Vec3>} position the new position
      */
-    setPosition = (position: Readonly<Vec3>): void => {
+    setTranslation = (position: Readonly<Vec3>): void => {
         this.position = cloneVec3(position);
         this.updateLocalMatrix();
     }
@@ -153,10 +157,10 @@ export class Transform {
     /**
      * Generates the current worldMatrix
      *
-     * @param {Readonly<Mat4>} [parentWorldMatrix] the parent worldMatrix that the local matrix is relative to
+     * @param {Readonly<Mat4>} parentWorldMatrix the parent worldMatrix that the local matrix is relative to
      * @returns {Mat4} the new world matrix for this transform
      */ 
-    updateWorldMatrix(parentWorldMatrix?: Readonly<Mat4>): Mat4 {
-        return mul(this.worldMatrix, this.localMatrix, parentWorldMatrix || IDENTITY_MATRIX);
+    updateWorldMatrix(parentWorldMatrix: Readonly<Mat4>): Mat4 {
+        return mul(this.worldMatrix, parentWorldMatrix, this.localMatrix);
     }
 }
