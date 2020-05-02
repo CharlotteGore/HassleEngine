@@ -12,6 +12,7 @@
       "allowJs": true,
       "baseUrl": ".",
       "strict": false,
+      "noImplicitReturns": true,
       "paths": {
         "glMatrix/*": ["./gl-matrix/src/*"]
       },
