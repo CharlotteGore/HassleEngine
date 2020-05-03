@@ -1,3 +1,6 @@
 [submodule "gl-matrix"]
 	path = gl-matrix
 	url = git@github.com:CharlotteGore/gl-matrix.git
+[submodule "source/Features/Input"]
+	path = source/Features/Input
+	url = git@github.com:CharlotteGore/Hassle-Input.git

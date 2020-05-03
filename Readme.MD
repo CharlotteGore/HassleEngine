@@ -1,6 +1,8 @@
 # Hassle Engine
 
-Extremely Work In Progress. Current status: Some basic skeleton classes and a slightly more than a skeleton Input Management class. 
+Extremely Work In Progress. Current status: Transform class is done, can now generate worldMatrices for a heirachy of objects, and there's a fully working Input manager (which is now in its own repo).
+
+Next steps: flesh out the entity class, add Mesh and Camera entity components, get a basic render pipeline going.
 
 ## Project Goals
 

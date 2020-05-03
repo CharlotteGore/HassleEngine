@@ -15,7 +15,7 @@ const IDENTITY_MATRIX = createMat4();
 
 export class Transform {
     private localMatrix: Mat4;
-    private worldMatrix: Mat4;
+    private worldMatrix: Mat4 | null;
 
     private position: Vec3;
     private scaling: Vec3;
@@ -23,7 +23,7 @@ export class Transform {
     
     constructor (rotation?: Readonly<Quat>, translation?: Readonly<Vec3>, scale?: Readonly<Vec3>) {
         this.localMatrix = createMat4();
-        this.worldMatrix = createMat4();
+        this.worldMatrix = null;
         this.position = translation ? cloneVec3(translation) : createVec3();
         this.scaling = scale ? cloneVec3(scale) : fromValuesVec3(1, 1, 1);
         this.rotation = rotation ? cloneQuat(rotation) : createQuat();
@@ -43,6 +43,7 @@ export class Transform {
      * @returns {Mat4} the current world matrix
      */
     getWorldMatrix = (): Mat4 => {
+        if (this.worldMatrix === null) throw new Error('Attempt to access worldMatrix without first calling updateWorldMatrix');
         return this.worldMatrix;
     }
 
@@ -157,10 +158,14 @@ export class Transform {
     /**
      * Generates the current worldMatrix
      *
-     * @param {Readonly<Mat4>} parentWorldMatrix the parent worldMatrix that the local matrix is relative to
+     * @param {(Transform|null)} parentWorldMatrix the parent transform
      * @returns {Mat4} the new world matrix for this transform
      */ 
-    updateWorldMatrix(parentWorldMatrix: Readonly<Mat4>): Mat4 {
-        return mul(this.worldMatrix, parentWorldMatrix, this.localMatrix);
+    updateWorldMatrix(parentTransform: Transform | null): Mat4 {
+        if (this.worldMatrix === null) this.worldMatrix = createMat4();
+        if (parentTransform === null) {
+            return mul(this.worldMatrix, IDENTITY_MATRIX, this.localMatrix);
+        }
+        return mul(this.worldMatrix, parentTransform.getWorldMatrix(), this.localMatrix);
     }
 }
