@@ -7,10 +7,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(glsl|vs|fs)?$/,
+        use: 'ts-shader-loader',
+      },
+      {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      },
+      }
     ],
   },
   resolve: {

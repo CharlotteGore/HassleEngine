@@ -1,0 +1,38 @@
+{
+    "sources": [
+        {
+            "id": "universe-texture",
+            "filePath": "./assets/textures/universe-texture.png",
+            "pixelHeight": 2048,
+            "pixelWidth": 2048,
+            "items": [
+                {
+                    "id": "stairfall",
+                    "origin": {
+                        "x":  0.0009765625,
+                        "y": 0.9990234375,
+                        "width": 0.5,
+                        "height": 0.125
+                    },
+                    "gridSize": {
+                        "columns": 1,
+                        "rows": 1
+                    }
+                },
+                {
+                    "id": "musical-steggy",
+                    "origin": {
+                        "x":  0,
+                        "y": 0.841796875,
+                        "width": 0.32958984375,
+                        "height": 0.078125
+                    },
+                    "gridSize": {
+                        "rows": 45,
+                        "columns": 8
+                    }
+                }
+            ]
+        }
+    ]
+}

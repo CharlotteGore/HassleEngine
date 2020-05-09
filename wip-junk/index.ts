@@ -1,4 +1,3 @@
-// Nothing to see here
 import { Program } from "../source/Features/Program/Program";
 import vertSrc from "./shaders/vertex.glsl";
 import fragSrc from "./shaders/fragment.glsl";
