@@ -1,14 +1,14 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./source/index.ts",
+  entry: path.resolve(__dirname, "wip-junk", "index.ts"),
   devtool: "inline-source-map",
   mode: "development",
   module: {
     rules: [
       {
-        test: /\.(glsl|vs|fs)?$/,
-        use: "ts-shader-loader",
+        test: /\.glsl$/,
+        loader: "webpack-glsl-loader",
       },
       {
         test: /\.tsx?$/,
@@ -18,13 +18,13 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".glsl"],
     alias: {
       glMatrix: path.resolve(__dirname, "gl-matrix", "src"),
     },
   },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: "junk.js",
+    path: path.resolve(__dirname, "wip-junk"),
   },
 };

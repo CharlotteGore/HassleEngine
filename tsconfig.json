@@ -1,20 +1,20 @@
 {
-    "input": "./**/*.ts",
-    "exclude": ["node_modules"],
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "sourceMap": true,
-      "lib": ["ES2019", "DOM"],
-      "noImplicitAny": true,
-      "module": "es6",
-      "target": "esnext",
-      "jsx": "react",
-      "allowJs": true,
-      "baseUrl": ".",
-      "strict": false,
-      "noImplicitReturns": true,
-      "paths": {
-        "glMatrix/*": ["./gl-matrix/src/*"]
-      },
+  "input": "./**/*.ts",
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "lib": ["ES2019", "DOM"],
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "baseUrl": ".",
+    "strict": false,
+    "noImplicitReturns": true,
+    "paths": {
+      "glMatrix/*": ["./gl-matrix/src/*"]
     }
   }
+}

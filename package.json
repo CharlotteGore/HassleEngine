@@ -4,7 +4,8 @@
   "description": "A custom Adventure Game engine",
   "main": "./build/bundle.js",
   "scripts": {
-    "dev": "webpack --config webpack.config.dev.js"
+    "dev": "webpack --config webpack.config.dev.js",
+    "junk": "webpack --config webpack.config.junk.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,6 @@
     "ts-shader-loader": "^1.0.6",
     "typescript": "^3.8.3",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.11"
   }
 }
